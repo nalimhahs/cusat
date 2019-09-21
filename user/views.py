@@ -9,23 +9,10 @@ def get_user_data(request):
         return render(request, '', {'userdata': userdata})
 
 
-def register_user_view(request):
+def login_user_view(request):
 
     if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.user_type = 'U'
-            print(user.user_type)
-            user.save()
-            username = user.cleaned_data.get('email')
-            raw_password = user.cleaned_data.get('password')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            
-        else:
-            form = UserRegistrationForm()
-            print('here')
+        pass
 
     return render(request, 'user/userreg.html', {'form': form})
 
