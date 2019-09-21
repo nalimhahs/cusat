@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from .models import CustomUser
 
-# Create your views here.
+def get_user_data(request):
+    userdata=CustomUser.objects.filter(username=user.username)
+    if(CustomUser.user_type=='U'):
+        return render(request,'',{'userdata':userdata})
