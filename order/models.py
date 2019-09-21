@@ -4,9 +4,9 @@ from user.models import CustomUser
 
 class Order(models.Model):
     user_details = models.ForeignKey(CustomUser, limit_choices_to={
-                                     'user_type': CustomUser.USER}, on_delete=models.PROTECT, related_name="User")
+                                     'user_type': CustomUser.USER}, on_delete=models.PROTECT, related_name="User", blank=True, null=True)
     assigned_driver = models.ForeignKey(CustomUser, limit_choices_to={
-                                        'user_type': CustomUser.DRIVER}, on_delete=models.PROTECT, related_name="Driver")
+                                        'user_type': CustomUser.DRIVER}, on_delete=models.PROTECT, related_name="Driver", blank=True, null=True)
     
     PLACED = 'P'
     PICKED_UP = 'U'
@@ -25,8 +25,13 @@ class Order(models.Model):
     weight = models.IntegerField()
     date_of_order = models.DateField(auto_now_add=True)
     waste_type = models.ForeignKey('WasteType', on_delete=models.PROTECT)
+    pickup_date = models.DateTimeField(blank=True)
 
+    def status_verbose(self):
+        return dict(Order.STATUS_CHOICES)[self.status]
 
+    def __str__(self):
+        return str(self.id)
 
 class WasteType(models.Model):
     name = models.CharField(max_length=30)
