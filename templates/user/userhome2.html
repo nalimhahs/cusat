@@ -258,7 +258,7 @@
                     />
                   </span>
                   <div class="media-body ml-2 d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">User</span>
+                    <span class="mb-0 text-sm  font-weight-bold">{{ user.first_name }}</span>
                   </div>
                 </div>
               </a>
@@ -314,7 +314,7 @@
                     role="tab"
                     aria-controls="tabs-icons-text-1"
                     aria-selected="true"
-                    ><i class="ni ni-cloud-upload-96 mr-2"></i>Add New Waste</a
+                    ><i class="ni ni-cloud-upload-96 mr-2"></i>Submit New Collection Request</a
                   >
                 </li>
                 <li class="nav-item">
@@ -410,8 +410,8 @@
                     role="tabpanel"
                     aria-labelledby="tabs-icons-text-2-tab"
                   >
-                    <div class="container">
-                      <h2>Previous submissions</h2>
+                    <div class="container" style="margin-top: 25px;">
+                      <h2>All Collection Requests</h2>
                       <table class="table table-hover">
                         <thead>
                           <tr>
